@@ -1,0 +1,16 @@
+.example-card {
+    max-width: 50%;
+    }
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/logo.png');
+    background-size: cover;
+    }
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+}
+    
+.example-container > * {
+    width: 50%;
+}

@@ -1,3 +1,123 @@
-<p>
+<!-- VehicleId
+Type
+ManufacturerNameShort
+Price  class="text-center"-->
+<div class="container">
+  <mat-card >
+    <form [formGroup]="vehicleForm" >
+      <mat-list role="list">
+        <mat-list-item role="listitem">
+          <mat-form-field>
+            <input matInput type="number" placeholder="VehicleId" formControlName="vehicleIdInput">
+          </mat-form-field>
+        </mat-list-item>
+        
+        <mat-list-item role="listitem" >
+            <mat-form-field>
+                <input matInput placeholder="Type" formControlName="typeInput">
+              </mat-form-field>
+        
+        </mat-list-item>
+            
+        <mat-list-item role="listitem">
+            <mat-form-field>
+                <input matInput placeholder="ManufacturerNameShort" formControlName="manufacturerInput">
+            </mat-form-field>        
+        </mat-list-item>
+        
+        <mat-list-item role="listitem">
+            <mat-form-field>
+                <input matInput type="number" placeholder="Price" formControlName="priceInput">
+              </mat-form-field>
+
+        </mat-list-item>
+      </mat-list>
+    </form>
+    </mat-card>
+
+    <div class="container" padding>
+      <button mat-raised-button	color="primary" (click)="sendData()" [disabled]="vehicleForm.pristine || !vehicleForm.valid ">Submit</button>
+      <button mat-raised-button	color="danger" (click)="cancel()">Cancel</button>
+    </div>
+</div>
+
+<!-- <button mat-button color="primary">Click me!</button> -->
+  <!-- <div class="container" padding>
+    <button mat-raised-button	color="primary" (click)="sendData($event)">Submit</button>
+</div> -->
+
+<p> FORM  : {{vehicleForm.value | json}}</p>
+<p> FORM  : {{vehicleForm.status | json}}</p>
+<p> FORM  touched: {{vehicleForm.touched | json}}</p>
+<p> FORM  pristine: {{vehicleForm.pristine | json}}</p>
+<p> FORM  untouched: {{vehicleForm.untouched | json}}</p>
+<p> FORM  dirty: {{vehicleForm.dirty | json}}</p>
+
+<div></div>
+<!-- <br><br>
+<div class="container">
+<mat-card>
+  <form>
+    <div class="form-group">
+      <label for="VehicleId">VehicleId</label>
+      <input type="text" class="form-control" id="VehicleId" aria-describedby="emailHelp" placeholder="Enter VehicleId">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Type</label>
+      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Type">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">ManufacturerNameShort</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Manufacturer Name Short ">
+      </div>
+    <div class="form-group">
+          <label for="exampleInputPassword1">Price</label>
+          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Price">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+</mat-card>
+
+</div>
+
+<mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-tile>1</mat-grid-tile>
+    <mat-grid-tile>2</mat-grid-tile>
+    <mat-grid-tile>3</mat-grid-tile>
+    <mat-grid-tile>4</mat-grid-tile>
+  </mat-grid-list> -->
+<!-- <div class="example-container">
+    <mat-chip-list>
+      <mat-chip>Papadum</mat-chip>
+      <mat-chip>Naan</mat-chip>
+      <mat-chip>Dal</mat-chip>
+    </mat-chip-list>
+</div> -->
+
+
+
+<!-- <p>
   vehicleform works!
 </p>
+
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Shiba Inu</mat-card-title>
+    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <p>
+      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+      bred for hunting.
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
+</mat-card> -->
