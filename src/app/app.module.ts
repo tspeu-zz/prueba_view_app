@@ -4,22 +4,27 @@ import { NgModule , CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule } from '@angular/material';
-import { MatFormFieldModule , MatInputModule , MatGridListModule} from '@angular/material';
+import { MatFormFieldModule , MatInputModule , MatGridListModule, MatSnackBarModule} from '@angular/material';
 
 import { LoginComponent } from './login/login.component';
 import { VehicleformComponent } from './vehicleform/vehicleform.component';
+import { SnackComponent } from './vehicleform/snack';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    VehicleformComponent
+    VehicleformComponent,
+    SnackComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     MatToolbarModule,
@@ -29,7 +34,7 @@ import { VehicleformComponent } from './vehicleform/vehicleform.component';
     MatListModule,
     MatCardModule,
     MatFormFieldModule,
-    MatInputModule, MatGridListModule
+    MatInputModule, MatGridListModule, MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent],

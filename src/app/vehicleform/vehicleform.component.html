@@ -3,55 +3,72 @@ Type
 ManufacturerNameShort
 Price  class="text-center"-->
 <div class="container">
-  <mat-card >
-    <form [formGroup]="vehicleForm" >
-      <mat-list role="list">
-        <mat-list-item role="listitem">
-          <mat-form-field>
-            <input matInput type="number" placeholder="VehicleId" formControlName="vehicleIdInput">
-          </mat-form-field>
-        </mat-list-item>
-        
-        <mat-list-item role="listitem" >
-            <mat-form-field>
-                <input matInput placeholder="Type" formControlName="typeInput">
-              </mat-form-field>
-        
-        </mat-list-item>
-            
-        <mat-list-item role="listitem">
-            <mat-form-field>
-                <input matInput placeholder="ManufacturerNameShort" formControlName="manufacturerInput">
-            </mat-form-field>        
-        </mat-list-item>
-        
-        <mat-list-item role="listitem">
-            <mat-form-field>
-                <input matInput type="number" placeholder="Price" formControlName="priceInput">
-              </mat-form-field>
+  <div class="row justify-content-center mt">
+      <div >
 
-        </mat-list-item>
-      </mat-list>
-    </form>
-    </mat-card>
+        <mat-card >
+          <form [formGroup]="vehicleForm" >
+            <mat-list role="list">
+              <mat-list-item role="listitem">
+                <mat-form-field>
+                  <input matInput type="number" placeholder="VehicleId" formControlName="VehicleId">
+                </mat-form-field>
+              </mat-list-item>
 
-    <div class="container" padding>
+              <mat-list-item role="listitem" >
+                <mat-form-field>
+                  <input matInput placeholder="Type" formControlName="Type">
+                </mat-form-field>
+
+              </mat-list-item>
+
+              <mat-list-item role="listitem">
+                <mat-form-field>
+                  <input matInput placeholder="ManufacturerNameShort" formControlName="ManufacturerNameShort">
+                </mat-form-field>
+              </mat-list-item>
+
+              <mat-list-item role="listitem">
+                <mat-form-field>
+                  <input matInput type="number" placeholder="Price" formControlName="Price">
+                </mat-form-field>
+
+              </mat-list-item>
+            </mat-list>
+          </form>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="text-center">
+
       <button mat-raised-button	color="primary" (click)="sendData()" [disabled]="vehicleForm.pristine || !vehicleForm.valid ">Submit</button>
       <button mat-raised-button	color="danger" (click)="cancel()">Cancel</button>
     </div>
+  </div>
+
+
+<div *ngIf="hasValue && returnValid" class="alert alert-success" role="alert">
+        {{ returnMessage }}
 </div>
+<div *ngIf="hasValue && !returnValid" class="alert alert-danger" role="alert">
+        {{ returnMessage }}
+</div>
+
+
 
 <!-- <button mat-button color="primary">Click me!</button> -->
   <!-- <div class="container" padding>
     <button mat-raised-button	color="primary" (click)="sendData($event)">Submit</button>
 </div> -->
 
-<p> FORM  : {{vehicleForm.value | json}}</p>
+<!-- <p> FORM  : {{vehicleForm.value | json}}</p>
 <p> FORM  : {{vehicleForm.status | json}}</p>
 <p> FORM  touched: {{vehicleForm.touched | json}}</p>
 <p> FORM  pristine: {{vehicleForm.pristine | json}}</p>
 <p> FORM  untouched: {{vehicleForm.untouched | json}}</p>
-<p> FORM  dirty: {{vehicleForm.dirty | json}}</p>
+<p> FORM  dirty: {{vehicleForm.dirty | json}}</p> -->
 
 <div></div>
 <!-- <br><br>
