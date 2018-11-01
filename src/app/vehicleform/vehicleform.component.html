@@ -1,36 +1,41 @@
-<!-- VehicleId
-Type
-ManufacturerNameShort
-Price  class="text-center"-->
-<div class="container">
-  <div class="row justify-content-center mt">
-      <div >
 
-        <mat-card >
+<!-- <div class="text-center" *ngIf="showSpinner">
+    <mat-progress-spinner
+    class="example-margin"
+    [color]="color"
+    [mode]="mode"
+    [value]="value">
+    </mat-progress-spinner>
+</div> -->
+<div class="container p-5 ">
+  <div class="row justify-content-center ">
+      <div>
+        <h3 class="text-center p-2 b-2 text-primary">Validation Form</h3>
+        <mat-card style="width:500px">
           <form [formGroup]="vehicleForm" >
-            <mat-list role="list">
+            <mat-list role="list" style="width:100%">
               <mat-list-item role="listitem">
-                <mat-form-field>
-                  <input matInput type="number" placeholder="VehicleId" formControlName="VehicleId">
+                <mat-form-field  style="width:100%">
+                  <input matInput type="number" placeholder="enter Vehicle Id" formControlName="VehicleId">
                 </mat-form-field>
               </mat-list-item>
 
               <mat-list-item role="listitem" >
-                <mat-form-field>
-                  <input matInput placeholder="Type" formControlName="Type">
+                <mat-form-field  style="width:100%">
+                  <input matInput placeholder="please enter type!" formControlName="Type">
                 </mat-form-field>
 
               </mat-list-item>
 
               <mat-list-item role="listitem">
-                <mat-form-field>
-                  <input matInput placeholder="ManufacturerNameShort" formControlName="ManufacturerNameShort">
+                <mat-form-field  style="width:100%">
+                  <input matInput placeholder="enter Manufacturer Name" formControlName="ManufacturerNameShort">
                 </mat-form-field>
               </mat-list-item>
 
               <mat-list-item role="listitem">
-                <mat-form-field>
-                  <input matInput type="number" placeholder="Price" formControlName="Price">
+                <mat-form-field  style="width:100%">
+                  <input matInput type="number" placeholder="enter Price" formControlName="Price">
                 </mat-form-field>
 
               </mat-list-item>
@@ -43,98 +48,19 @@ Price  class="text-center"-->
   <div class="container">
     <div class="text-center">
 
-      <button mat-raised-button	color="primary" (click)="sendData()" [disabled]="vehicleForm.pristine || !vehicleForm.valid ">Submit</button>
-      <button mat-raised-button	color="danger" (click)="cancel()">Cancel</button>
+      <button mat-raised-button	color="primary" (click)="sendData()"
+      [disabled]="vehicleForm.pristine || !vehicleForm.valid "
+      class="p-2 t-2" >Submit</button>
+      <span>&nbsp;&nbsp; </span>
+      <button mat-raised-button	color="danger"
+      (click)="cancel()"  class="p-2 b-5">Cancel</button>
     </div>
   </div>
 
 
 <div *ngIf="hasValue && returnValid" class="alert alert-success" role="alert">
-        {{ returnMessage }}
+        {{ returnMessage }} | {{textValid }}
 </div>
 <div *ngIf="hasValue && !returnValid" class="alert alert-danger" role="alert">
-        {{ returnMessage }}
+        {{ returnMessage }} | {{textValid }}
 </div>
-
-
-
-<!-- <button mat-button color="primary">Click me!</button> -->
-  <!-- <div class="container" padding>
-    <button mat-raised-button	color="primary" (click)="sendData($event)">Submit</button>
-</div> -->
-
-<!-- <p> FORM  : {{vehicleForm.value | json}}</p>
-<p> FORM  : {{vehicleForm.status | json}}</p>
-<p> FORM  touched: {{vehicleForm.touched | json}}</p>
-<p> FORM  pristine: {{vehicleForm.pristine | json}}</p>
-<p> FORM  untouched: {{vehicleForm.untouched | json}}</p>
-<p> FORM  dirty: {{vehicleForm.dirty | json}}</p> -->
-
-<div></div>
-<!-- <br><br>
-<div class="container">
-<mat-card>
-  <form>
-    <div class="form-group">
-      <label for="VehicleId">VehicleId</label>
-      <input type="text" class="form-control" id="VehicleId" aria-describedby="emailHelp" placeholder="Enter VehicleId">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Type</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Type">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">ManufacturerNameShort</label>
-        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Manufacturer Name Short ">
-      </div>
-    <div class="form-group">
-          <label for="exampleInputPassword1">Price</label>
-          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Price">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-
-</mat-card>
-
-</div>
-
-<mat-grid-list cols="2" rowHeight="2:1">
-    <mat-grid-tile>1</mat-grid-tile>
-    <mat-grid-tile>2</mat-grid-tile>
-    <mat-grid-tile>3</mat-grid-tile>
-    <mat-grid-tile>4</mat-grid-tile>
-  </mat-grid-list> -->
-<!-- <div class="example-container">
-    <mat-chip-list>
-      <mat-chip>Papadum</mat-chip>
-      <mat-chip>Naan</mat-chip>
-      <mat-chip>Dal</mat-chip>
-    </mat-chip-list>
-</div> -->
-
-
-
-<!-- <p>
-  vehicleform works!
-</p>
-
-<mat-card class="example-card">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Shiba Inu</mat-card-title>
-    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-  <mat-card-content>
-    <p>
-      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting.
-    </p>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
-  </mat-card-actions>
-</mat-card> -->

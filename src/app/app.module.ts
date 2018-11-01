@@ -7,7 +7,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule } from '@angular/material';
-import { MatFormFieldModule , MatInputModule , MatGridListModule, MatSnackBarModule} from '@angular/material';
+import { MatFormFieldModule ,  MatGridListModule, MatSnackBarModule, MatTooltipModule} from '@angular/material';
+import { MatInputModule , MatProgressSpinnerModule} from '@angular/material';
 
 import { LoginComponent } from './login/login.component';
 import { VehicleformComponent } from './vehicleform/vehicleform.component';
@@ -34,7 +35,10 @@ import { SnackComponent } from './vehicleform/snack';
     MatListModule,
     MatCardModule,
     MatFormFieldModule,
-    MatInputModule, MatGridListModule, MatSnackBarModule
+    MatInputModule, MatGridListModule,
+    MatSnackBarModule,
+    MatTooltipModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent],

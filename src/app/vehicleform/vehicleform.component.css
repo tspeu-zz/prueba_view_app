@@ -15,6 +15,13 @@
     width: 50%;
 }
 
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
 .style-succes {
 
   background-color: gray;

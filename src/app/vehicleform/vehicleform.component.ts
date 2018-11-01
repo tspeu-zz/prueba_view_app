@@ -21,25 +21,30 @@ import { SnackComponent } from './snack';
 
 export class VehicleformComponent implements OnInit {
 
-  vehicleId: string;
-  type: number;
-  price: number;
-  manufacturer: string;
+  // vehicleId: string;
+  // type: number;
+  // price: number;
+  // manufacturer: string;
 
   model: any = {};
 // reactive form
   vehicleForm: FormGroup;
   values: any;
-  url = 'http://localhost:5000/api/values';
+  url = 'http://localhost:5000/api/vehicle';
 
   hasValue = false;
   returnMessage: string;
   returnValid = false;
+  textValid: string;
+  color = 'accent';
+  mode = 'indeterminate';
+  value = 100;
+  // showSpinner = false;
 
   constructor(private http: HttpClient, public snackBar: MatSnackBar) {}
 
   ngOnInit() {
-                                          // form state
+
     this.vehicleForm = new FormGroup(
       {
         VehicleId: new FormControl('', Validators.required),
@@ -58,52 +63,45 @@ export class VehicleformComponent implements OnInit {
   }
 
   postTest(testData: any) {
-
+    // this.showSpinner = true;
     const body = JSON.stringify(testData);
     console.log('se envia  body--->', body);
-    // console.log('body--con -JSON.stringify-->', JSON.stringify(testData));
 
-    // let dataFormat = JSON.stringify(testData);
     const headerOptions = new HttpHeaders({ 'Content-Type': 'application/json' });
+    // setTimeout(() => {  this.showSpinner = false;}, 1000);
 
-      return this.http.post(this.url, body, {headers: headerOptions})
-            .subscribe( res => {
-              this.values = res;
-              // this.value> {vehicleId: 1, returnCode: 1}
+    return this.http.post(this.url, body,
+      {headers: headerOptions})
+      .subscribe( res => {
+          // this.value> {vehicleId: 1, returnCode: 1}
+          this.values = res;
 
-              this.returnMessage = `vehicleId: ${this.values.vehicleId} | returnCode: ${this.values.returnCode}`;
+          this.returnMessage = `vehicleId: ${this.values.vehicleId} | returnCode: ${this.values.returnCode} | `;
 
-                if (this.values.returnCode) {
-                  console.log('VALIDO');
-                this.hasValue = true;
-                this.returnValid = true;
-                this.openSnackBar( this.returnMessage , 'close');
-              } else {
+          // this.showSpinner = false;
 
-                console.log('INVALIDO');
-                this.hasValue = true;
-                this.returnValid = false;
-                  this.openSnackBar( this.returnMessage , 'close');
-                }
+            if (this.values.returnCode) {
 
-      }, error => { console.log(error);
-      });
+              this.textValid = 'VALID';
+              this.hasValue = true;
+              this.returnValid = true;
+            this.openSnackBar( this.returnMessage + this.textValid, 'close');
+          } else {
 
-
-  //  .pipe(
-  //     map((res: any) => {
-  //       const result = res;
-  //       console.log('desde api result--->', result);
-  //     })
-  //   );
-
+            this.textValid = 'INVALID';
+            this.hasValue = true;
+            this.returnValid = false;
+            this.openSnackBar( this.returnMessage  + 'INVALID', 'close');
+          }
+          this.vehicleForm.reset();
+        }, error => { console.log(error);
+        });
   }
 
 
-
   cancel() {
-    // this.openSnackBar('tofdo ok', 'close');
-    console.log('cancel');
+    this.vehicleForm.reset();
+
   }
 
 
@@ -112,7 +110,7 @@ export class VehicleformComponent implements OnInit {
     this.snackBar.open(message, action, {
       duration: 3500,
       panelClass: 'success-dialog'
-  });
+    });
 
   }
 /*

@@ -1,9 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 @import '../node_modules/font-awesome/css/font-awesome.min.css';
+/* @include angular-material-theme($candy-app-theme); */
+
 /* @import '~@angular/material/prebuilt-themes/deeppurple-amber.css'; */
 /* html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+/* // `.unicorn-dark-theme` will be affected by this alternate dark theme instead of the default theme. */
+
 
 .dark-primary-color    { background: #455A64; }
 .default-primary-color { background: #607D8B; }
