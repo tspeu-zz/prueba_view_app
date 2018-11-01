@@ -31,6 +31,7 @@ export class VehicleformComponent implements OnInit {
   vehicleForm: FormGroup;
   values: any;
   url = 'http://localhost:5000/api/vehicle';
+  title = 'Vehicle Validation Form';
 
   hasValue = false;
   returnMessage: string;
@@ -39,6 +40,7 @@ export class VehicleformComponent implements OnInit {
   color = 'accent';
   mode = 'indeterminate';
   value = 100;
+  show = false;
   // showSpinner = false;
 
   constructor(private http: HttpClient, public snackBar: MatSnackBar) {}
@@ -48,9 +50,9 @@ export class VehicleformComponent implements OnInit {
     this.vehicleForm = new FormGroup(
       {
         VehicleId: new FormControl('', Validators.required),
-        Type: new FormControl('',  Validators.required),
+        Type: new FormControl(),
         ManufacturerNameShort: new FormControl(),
-        Price: new FormControl()
+        Price: new FormControl('',  Validators.required)
       });
   }
 
@@ -60,6 +62,7 @@ export class VehicleformComponent implements OnInit {
     console.log('model' + this.model);
     this.postTest(this.model);
 
+
   }
 
   postTest(testData: any) {
@@ -68,7 +71,6 @@ export class VehicleformComponent implements OnInit {
     console.log('se envia  body--->', body);
 
     const headerOptions = new HttpHeaders({ 'Content-Type': 'application/json' });
-    // setTimeout(() => {  this.showSpinner = false;}, 1000);
 
     return this.http.post(this.url, body,
       {headers: headerOptions})
@@ -86,14 +88,16 @@ export class VehicleformComponent implements OnInit {
               this.hasValue = true;
               this.returnValid = true;
             this.openSnackBar( this.returnMessage + this.textValid, 'close');
+            this.show = false;
           } else {
 
             this.textValid = 'INVALID';
             this.hasValue = true;
             this.returnValid = false;
             this.openSnackBar( this.returnMessage  + 'INVALID', 'close');
+            this.show = false;
           }
-          this.vehicleForm.reset();
+
         }, error => { console.log(error);
         });
   }
@@ -101,7 +105,7 @@ export class VehicleformComponent implements OnInit {
 
   cancel() {
     this.vehicleForm.reset();
-
+    this.show = true;
   }
 
 
@@ -111,6 +115,10 @@ export class VehicleformComponent implements OnInit {
       duration: 3500,
       panelClass: 'success-dialog'
     });
+    setTimeout(() => {
+      this.vehicleForm.reset();
+        this.show = true;
+      }, 3500);
 
   }
 /*
