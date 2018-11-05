@@ -30,7 +30,9 @@ export class VehicleformComponent implements OnInit {
 // reactive form
   vehicleForm: FormGroup;
   values: any;
-  url = 'http://localhost:5000/api/vehicle';
+  url = 'https://jm-prueba-api.azurewebsites.net/api/vehicle';
+  // url = 'http://localhost:5000/api/vehicle';
+  // url = ' https://localhost:5001/api/vehicle';
   title = 'Vehicle Validation Form';
 
   hasValue = false;
@@ -71,7 +73,7 @@ export class VehicleformComponent implements OnInit {
     console.log('se envia  body--->', body);
 
     const headerOptions = new HttpHeaders({ 'Content-Type': 'application/json' });
-
+    console.log('URL--------->' + this.url);
     return this.http.post(this.url, body,
       {headers: headerOptions})
       .subscribe( res => {
